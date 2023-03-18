@@ -11,14 +11,6 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  // Example of useEffect running on first render (when component mounts).
-  // Also for every state update - when clicking into the input field, for example.
-  // Essentially useEffect runs each time AFTER every component's render cycle.
-  // Passing a state variable within the dependency array will trigger the code inside the useEffect block if the state changes.
-  // For example, passing 'enteredPassword' as a dependencing will log 'effect running' after each key stroke in the password input.
-  // using a return statement + arrow function within useEffect block WITH a dependency will trigger as a 'clean-up function' before the effect function runs.
-  // using a return statement + arrow function within useEffect block WITHOUT dependencies, the 'clean-up function' would run once when the component unmounts / is removed from the DOM.
-  
   useEffect(() => {
     console.log('Effect running');
 
