@@ -34,12 +34,15 @@ const App = () => {
   return (
     <>
       <AuthContext.Provider 
-        value={{ isLoggedIn: isLoggedIn }}
+        value={{ 
+          isLoggedIn: isLoggedIn,
+          onLogout: logoutHandler
+        }}
       >
-        <MainHeader onLogout={logoutHandler} />
+        <MainHeader />
         <main>
-          {!isLoggedIn && <Login onLogin={loginHandler} />}
-          {isLoggedIn && <Home onLogout={logoutHandler} />}
+          {!isLoggedIn && <Login onLogin={ loginHandler } />}
+          {isLoggedIn && <Home onLogout={ logoutHandler } />}
         </main>
       </AuthContext.Provider>
     </>
