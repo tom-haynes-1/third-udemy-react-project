@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
 
-import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
+
+import Card from '../UI/Card/Card';
 import Button from '../UI/Button/Button';
+import Input from '../UI/Input/Input';
 import AuthContext from '../../store/auth-context';
 
 const emailReducer = (state, action) => {
@@ -102,34 +104,26 @@ const Login = (props) => {
       <form 
         onSubmit={ submitHandler }
       >
-        <div
-          className={`${ classes.control } ${
-            !emailState.isValid ? classes.invalid : ''
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={ emailState.value }
-            onChange={ emailChangeHandler }
-            onBlur={ validateEmailHandler }
-          />
-        </div>
-        <div
-          className={`${ classes.control } ${
-            !passwordState.isValid ? classes.invalid : ''
-          }`}
-        >
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={ passwordState.value }
-            onChange={ passwordChangeHandler }
-            onBlur={ validatePasswordHandler }
-          />
-        </div>
+       <Input
+        labelText="E-Mail"
+        labelId="email"
+        inputType="email"
+        inputId="email"
+        isValid={ emailIsValid }
+        value={ emailState.value }
+        onChange={ emailChangeHandler }
+        onBlur={ validateEmailHandler }
+       /> 
+       <Input
+        labelText="Password"
+        labelId="password"
+        inputType="password"
+        inputId="password"
+        isValid={ passwordIsValid }
+        value={ passwordState.value }
+        onChange={ passwordChangeHandler }
+        onBlur={ validatePasswordHandler }
+       />
         <div className={ classes.actions }>
           <Button 
             type="submit" 
